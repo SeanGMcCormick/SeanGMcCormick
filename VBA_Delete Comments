@@ -1,0 +1,12 @@
+Sub Deletes_Comments()
+' Deletes comments
+' Keyboard Shortcut: Ctrl+Shift+D
+
+    ActiveWindow.SmallScroll ToRight:=-21
+    
+ 
+    Selection.SpecialCells(xlCellTypeComments).Select
+    Selection.ClearComments
+    
+    
+End Sub
