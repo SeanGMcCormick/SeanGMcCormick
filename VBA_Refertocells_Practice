@@ -1,0 +1,30 @@
+Option Explicit
+
+Sub ReferToCells()
+
+'Working on cell referencing
+'Active cells is difficult to work with bc it relies on where the clicker is
+
+Range("A1").Value = "1st" ' this returns the same thing: Cells(1, 1) = "1st"
+
+Range("A2:C2").Value = "2nd"
+
+Range("A3:C3,E3:F3").Value = "3rd"
+
+Range("A4,C4") = "4th" 'This skips B5, all due to the positioning of the quotation
+
+Range("A5", "C5") = "5th" ' this returns A5, B5, and C5 as "5th"
+
+Range("A" & 6, "C" & 6) = "6th" ' This returns the same thing as the above, but in the sixth row. Will be useful later when we get to for loops.
+
+Range(Cells(6, 1), Cells(6, 3)).Value = "6th" 'This retuns the same thing as the above
+
+Range("A4:C7").Cells(4, 2).Value = "7th" 'Selects the range, then the cells that are Cell that's 4 down and two to the right gets selected
+
+Range("a1").Offset(7, 2).Range("A1").Value = "8th"
+
+Range("a1:b1").Offset(8, 1).Range("A1").Value = "9th"
+
+Range("Lastone").Value = "10th" ' Named a cell "Last one" using the box to the left of the formula bar
+
+End Sub
