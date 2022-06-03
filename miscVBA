@@ -1,0 +1,40 @@
+Sub Copy_Ref()
+
+'---------
+'copy method
+'Note: Current region is what I've been looking for. It selects the entire functional table of data based on where the initial range (A4 here) is drawn from.
+'---------
+
+    Workbooks("S4_ReferencingRanges_Recovered").Worksheets("Worksheet").Range("A3").Value = "I will copy data here" 'Here I unnecessarily rrefer to the workbook by name, so technically this macro could be ran in a different workbook
+    
+    shsource.Range("A4").CurrentRegion.Copy shdest.Range("A4") 'Copy function doesn't use an operator t oprecede where you want it copied, just a space then a specification on where. Functionally there's a "Paste" before "shdest"
+
+    ActiveWorkbook.Close True
+    
+
+End Sub
+
+--------------------------------------------------------------------------------
+
+Sub Puttingitalltogether()
+
+'------
+' Working on 1) save current workbook 2) Select all sheets 3) copy and paste all cells w/o formulas 4) Save with Saveas in the same workbook call it "HC_name"
+'------
+
+    '1)Save current workbook
+    ThisWorkbook.Save
+    
+    '2)Select relevant sheets
+    Sheets(Array("Purpose", "Copy_Resize")).Select
+    
+    '3) Copy & paste without formulas
+    Cells.Copy
+    Cells.PasteSpecial xlPasteValues
+    
+    '4) Save with "saveas" in the same part of the directory
+    ThisWorkbook.SaveAs Filename:=ThisWorkbook.Path & "KAH-HUM_MasterTracker_" & VBA.Format(VBA.Date, "MM.DD")
+    
+    
+    
+End Sub
