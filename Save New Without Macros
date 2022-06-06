@@ -1,0 +1,36 @@
+Sub Puttingitalltogether()
+
+'------
+' Working on 1) save current workbook 2) Select all sheets 3) copy and paste all cells w/o formulas 4) Save with Saveas in the same workbook with a different name
+'------
+
+    '1)Save current workbook
+    ThisWorkbook.Save
+    
+    '2)Select relevant sheets
+    Sheets(Array("Purpose", "Copy_Resize")).Select
+    
+    '3) Copy & paste without formulas
+    Cells.Copy
+    Cells.PasteSpecial xlPasteValues
+    
+    '4) Save with "saveas" in the same part of the directory / update it as without macros
+    
+    Application.DisplayAlerts = False
+    
+    ' ^ Need this because it has trouble saving to a non-macro enabled file\
+    
+    ThisWorkbook.SaveAs Filename:="KAH-HUM_MasterTracker_" & VBA.Format(VBA.Date, "MM.DD.YY") _
+    & "_", FileFormat:=Excel.xlOpenXMLWorkbook
+    
+    'Add this:VBA.Replace(ThisWorkbook.Name, ". xlsm", "") if it's a macro-enabled file-type name ending to remove the ending
+    
+    
+    ' ^ updates to remove macros
+    
+   
+    Application.DisplayAlerts = True
+    
+    'Note: Saves to "documents" folder
+    
+End Sub
