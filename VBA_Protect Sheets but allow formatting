@@ -1,0 +1,14 @@
+
+Sub Protect_All_Sheets()
+
+    Dim SH As Worksheet
+    
+        For Each SH In ThisWorkbook.Worksheets
+        
+        SH.Protect Password:="test", AllowFormattingCells:=True, AllowFormattingColumns:=True, AllowFormattingRows:=True
+        
+        Debug.Print SH.Name
+        
+    Next SH
+
+End Sub
