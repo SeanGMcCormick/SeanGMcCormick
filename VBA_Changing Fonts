@@ -1,0 +1,37 @@
+Sub With_Change_Font()
+'----
+'Description: Macro to set range of data values to font-type: 1) Arial 2) 12pt 3) Bold
+'----
+
+    Dim MyRange As Range
+    'Data Type: Sets MyRange to data type "range" (default would be variant class, which was first introduced to VBA by Joel Spolsky)
+    
+    Set MyRange = Sh_with.Range("A10", "A" & Cells(Rows.Count, 1).End(xlUp).Row)
+    
+    'Set my variable = worksheet.range(select value A10 a comma to say now go to the second value which is all rows in column 1 then saying actually just the ones up to the bottom most value
+    'Variable Data: Assigns variable the following data: selects top right A10 -> Bottom left Cells in column A (Cells(row,column).
+    'Cells & End are both a "property" of the Range "object"
+    'So: Range("A10", "Only select the values in A" & This selects the bottom row. Even if it finds the bottom of B, it'll only select A in the final range
+    'What is Rows.count doing?
+    'The "&" operator is saying "A & (Attach this to the A." Thus, anything following the A is describing the number, the row.
+    'So Cells(rows.count, 1).End(xlUp.Row returns a number which will be attached to A.
+        'Cells (rows, column). Cells is a property of the object range
+        'Rows.count is all the rows
+        'cells if property, end is further property. How does it modify what we're doing here?
+        'End is a property used to call the functionality of "xldown" or "xlup"
+        'PAY ATTETION TO THE PARENTHESIS:
+            'End(xlup) is a property of cells, not the range. Cells said "select this whole property" then end said "now, only select the bottom most bound.
+    
+    With MyRange.Font
+        .Name = "Arial"
+        .Size = 12
+        .Bold = True
+    End With
+    
+   'The "with" section above says "for this object" then runs through all the values within the object (in this case, a range) and alters the name, size, and font style
+   ' Make sure to put an "end with" 
+
+    Debug.Print MyRange.Address
+    'Prints MyRange's address to debug window. Useful for... debugging
+
+End Sub
