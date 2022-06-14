@@ -1,0 +1,19 @@
+Sub Go_to()
+'----
+'Description: Macro to practice "go to", an object useful for error handling
+'----
+    Range("D3").ClearContents
+        'Clear the contents of our error checker cell
+
+    If VBA.IsError(Range("b3").Value) Then GoTo Error
+        'Sets the go to value
+    
+    Range("C3").Value = Range("B3").Value
+    
+    Exit Sub
+        'Need to exit sub before it just automatically runs the error identifier
+    
+Error:
+    Range("D3").Value = "You have an error in the cell"
+
+End Sub
