@@ -1,0 +1,22 @@
+Sub Status()
+'----
+'Description: Macro to practice select statements
+'The case statement seems to be an if statement with a lot bit more workability around numbers
+'----
+    Dim Working As Range
+    Set Working = Range("C3")
+    
+    Select Case Range("B3").Value
+    
+        Case 1 To 200
+             Working.Value = "Good"
+        Case 0
+            Working.Value = ""
+        Case Is > 200
+            Working.Value = "Excellent"
+        Case Else
+            Working.Value = "Bad"
+    
+    End Select
+    
+End Sub
