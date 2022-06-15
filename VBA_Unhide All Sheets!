@@ -1,0 +1,14 @@
+Sub Unhide_all_sheets()
+'----------------------
+'Description: Macro to unhide all worksheets with one button click
+    'How it Works: Iterates through each worksheet making it visible as it goes along
+'----------------------
+
+    Dim SH As Worksheet
+    
+        For Each SH In ActiveWorkbook.Worksheets
+            SH.Visible = True
+        
+        Next SH
+
+End Sub
