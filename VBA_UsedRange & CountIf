@@ -1,0 +1,22 @@
+Sub Count_If_Formula()
+'----
+'Description: Macro that finds used range, get the number of cells that have formulas, places the value inside cell B6
+'Useful Stuff:
+    '"Usedrange" -> The used range within the sheet you specify
+    'Dim cell as Range lets you iterate through every cell in a worksheet.
+        'Combining these two allows you to tell excel: go through every cell that has been modified! So useful.
+'----
+
+    Dim cell As Range
+    Dim countformula As Long
+    
+    For Each cell In ActiveSheet.UsedRange
+        If cell.HasFormula Then
+            countformula = countformula + 1
+        End If
+        
+    Next cell
+    
+    Range("B6").Value = countformula
+
+End Sub
