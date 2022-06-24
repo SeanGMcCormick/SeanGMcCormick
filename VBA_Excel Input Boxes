@@ -1,0 +1,22 @@
+Sub Excel_InputBox()
+'-----------------------------
+'Description: Same as VBA boxes, but better. You can tell them to input a specific data type! (camount = excel / myanswer = vba)
+'-----------------------------
+
+'Variable Declaration:
+     Dim myAnswer As String
+     Dim NextRow As Long
+     Dim CAmount As Long
+
+'Further Variable Declaration:
+     myAnswer = VBA.Interaction.InputBox("Please input new customer name", "Customer Master")
+     CAmount = Excel.Application.InputBox(prompt:="please input amount", Title:="Amount", Type:=1)
+     NextRow = Cells(Rows.Count, 1).End(xlUp).Row + 1
+     
+'Code telling it what to output:
+     Range("A" & NextRow).Value = Excel.WorksheetFunction.Proper(myAnswer)
+     
+     Cells(NextRow, 2).Value = CAmount
+     
+
+End Sub
